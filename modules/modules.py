@@ -24,7 +24,7 @@ def read_json(json_fpath):
     Args:
         json_fpath -- string (filepath)
     Returns:
-        json_dict -- list
+        json_dict -- dictionary
     """
 
     with open(json_fpath, mode='r') as json_file:
