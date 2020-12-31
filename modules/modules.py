@@ -1,5 +1,6 @@
 import smtplib as smtp
 from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 import json
 
 def send_mail(sender, password, receiver, html, msg):
@@ -31,3 +32,12 @@ def read_json(json_fpath):
         json_str = json_file.read()
         json_dict = json.loads(json_str)
     return json_dict
+
+def create_MIME(subject='', html='', sender='', sender_alias='Incognito', receiver='', receiver_alias='Incognito'):
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = '{0}'.format(subject)
+    msg['From'] = '{0} <{1}>'.format(sender_alias, sender)
+    msg['To'] = '{0} <{1}>'.format(receiver,_alias, receiver)
+
+    return msg

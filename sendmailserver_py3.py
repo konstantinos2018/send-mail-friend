@@ -6,7 +6,6 @@ import cgitb;cgitb.enable()
 import sys, os
 import time, datetime
 import smtplib as smtp
-from email.mime.multipart import MIMEMultipart
 from modules import modules
 
 print("Content-Type: text/html")
@@ -19,12 +18,6 @@ sens_data = modules.read_json('./sensitive_data.json')
 sender = sens_data['Sender'][0]['mail']
 password = sens_data['Sender'][0]['password']
 receiver = sens_data['Receiver'][0]['mail']
-
-msg = MIMEMultipart('alternative')
-msg['Subject'] = 'Subject'
-msg['From'] = 'Sender name <{0}>'.format(sender)
-msg['To'] = 'Receiver name <{0}>'.format(receiver)
-
 
 # Define intro word
 t = datetime.datetime.now()
@@ -64,9 +57,14 @@ html = """\
 </html>
 """.format(in_word, t_mins)
 
+subject = 'Χωρίς Θέμα'
+sender_alias = 'Άγνωστος'
+receiver_alias = 'Άγνωστος'
+msg = modules.create_MIME(subject=subject, html=html, sender=sender, sender_alias=sender_alias, receiver=receiver, receiver_alias=receiver_alias)
+
 # Send message
 # Get current datetime
 print('<p><b>Second</b>: {0}</p><br>'.format(time.ctime()))
 
-modules.send_mail(sender, password, receiver, html, msg)
+modules.send_mail(sender, password, receiver, msg)
 
