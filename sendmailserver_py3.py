@@ -5,7 +5,6 @@ import cgi;
 import cgitb;cgitb.enable()
 import sys, os
 import time, datetime
-import smtplib as smtp
 from modules import modules
 
 print("Content-Type: text/html")
@@ -13,6 +12,7 @@ print("") #use this double quote print statement to add a blank line in the scri
 print('<meta charset="utf-8">')
 
 # Message 
+# Read sensitive data JSON file
 sens_data = modules.read_json('./sensitive_data.json')
 
 sender = sens_data['Sender'][0]['mail']
@@ -34,7 +34,7 @@ elif (t.hour > 16) and (t.hour <= 19):
 elif (t.hour > 19) and (t.hour < 23 ):
   in_word = 'Καλό βράδυ'
 
-# Compute time period until leave thessaloniki
+# Compute time period until leave
 t_leave = datetime.datetime(2020, 10, 23, 15, 15, 0, 0) # leaving time
 t_diff = t_leave - t
 
@@ -60,6 +60,7 @@ html = """\
 subject = 'Χωρίς Θέμα'
 sender_alias = 'Άγνωστος'
 receiver_alias = 'Άγνωστος'
+# create MIME object
 msg = modules.create_MIME(subject=subject, html=html, sender=sender, sender_alias=sender_alias, receiver=receiver, receiver_alias=receiver_alias)
 
 # Send message
