@@ -39,7 +39,7 @@ t_diff = t_leave - t
 t_mins = t_diff.days*24*60 + t_diff.seconds/60
 
 
-# Create message
+# Create message content and metadata
 html = """\
 <html>
   <head></head>
@@ -57,9 +57,10 @@ html = """\
 subject = 'Χωρίς Θέμα'
 sender_alias = 'Άγνωστος'
 receiver_alias = 'Άγνωστος'
+
 # create MIME object
 msg = modules.create_MIME(subject=subject, html=html, sender=sender, sender_alias=sender_alias, receiver=receiver, receiver_alias=receiver_alias)
 
-
+# Send mail
 modules.send_mail(sender, password, receiver, msg)
 
