@@ -60,9 +60,6 @@ receiver_alias = 'Άγνωστος'
 # create MIME object
 msg = modules.create_MIME(subject=subject, html=html, sender=sender, sender_alias=sender_alias, receiver=receiver, receiver_alias=receiver_alias)
 
-# Send message
-# Get current datetime
-print('<p><b>Second</b>: {0}</p><br>'.format(time.ctime()))
 
 modules.send_mail(sender, password, receiver, msg)
 
