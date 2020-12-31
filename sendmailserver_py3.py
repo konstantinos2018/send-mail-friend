@@ -21,18 +21,15 @@ receiver = sens_data['Receiver'][0]['mail']
 
 # Define intro word
 t = datetime.datetime.now()
-if (t.hour >= 23) and (t.hour <= 1):
-  in_word = 'Good night'
-elif (t.hour > 1) and (t.hour <= 5):
-  in_word = 'Καλό ξημέρωμα'
-elif (t.hour > 5) and (t.hour < 12):
+
+if (t.hour >= 5) and (t.hour < 12):
   in_word = 'Good morning'
-elif (t.hour >= 12) and (t.hour <= 16):
-  in_word = 'Good evening'
-elif (t.hour > 16) and (t.hour <= 19):
+elif (t.hour >= 12) and (t.hour <= 17):
   in_word = 'Good afternoon'
-elif (t.hour > 19) and (t.hour < 23 ):
-  in_word = 'Καλό βράδυ'
+elif (t.hour > 17) and (t.hour <= 21):
+  in_word = 'Good evening'
+elif (t.hour > 21) and (t.hour < 5 ):
+  in_word = 'Good night'
 
 # Compute time period until leave
 t_leave = datetime.datetime(2020, 10, 23, 15, 15, 0, 0) # leaving time
