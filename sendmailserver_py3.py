@@ -36,7 +36,7 @@ t_leave = datetime.datetime(2020, 10, 23, 15, 15, 0, 0) # leaving time
 t_diff = t_leave - t
 
 # convert time to minutes
-t_mins = t_diff.days*24*60 + t_diff.seconds/60
+t_mins = t_diff.total_seconds() / 60
 
 
 # Create message content and metadata
