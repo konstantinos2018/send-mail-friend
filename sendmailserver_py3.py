@@ -29,7 +29,7 @@ t_leave = dt.datetime(2020, 10, 23, 15, 15, 0, 0) # leaving time
 t_diff = t_leave - t
 
 # convert time to minutes
-t_mins = t_diff.total_seconds() / 60
+t_diff_mins = t_diff.total_seconds() / 60
 
 
 # Create message content and metadata
@@ -45,7 +45,7 @@ html = """\
     Kostas</p>
   </body>
 </html>
-""".format(in_word, t_mins)
+""".format(in_word, t_diff_mins)
 
 subject = 'Χωρίς Θέμα'
 sender_alias = 'Άγνωστος'
