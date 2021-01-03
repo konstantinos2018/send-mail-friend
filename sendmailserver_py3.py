@@ -1,15 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # === IMPORTS ===
-import cgi;
-import cgitb;cgitb.enable()
 import sys, os
 import time, datetime
 from modules import modules
-
-print("Content-Type: text/html")
-print("") #use this double quote print statement to add a blank line in the script
-print('<meta charset="utf-8">')
 
 # Message 
 # Read sensitive data JSON file
