@@ -1,6 +1,8 @@
-# Project files
+# My Project files
 sensitive_data.json
 *.pyc
+tests/
+sendmailserver.py
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,windows,vscode
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,windows,vscode
