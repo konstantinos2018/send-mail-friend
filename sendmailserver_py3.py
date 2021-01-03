@@ -40,9 +40,9 @@ html = """\
 </html>
 """.format(greeting_word, t_diff_mins)
 
-subject = 'Χωρίς Θέμα'
-sender_alias = 'Άγνωστος'
-receiver_alias = 'Άγνωστος'
+subject = 'Greetings'
+sender_alias = sens_data['Sender'][0]['name_alias']
+receiver_alias = sens_data['Receiver'][0]['name_alias']
 
 # create MIME object
 msg = modules.create_MIME(subject=subject, html=html, sender=sender, sender_alias=sender_alias, receiver=receiver, receiver_alias=receiver_alias)
