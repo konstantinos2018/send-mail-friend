@@ -7,9 +7,8 @@ import datetime as dt
 def send_mail(sender, password, receiver, msg):
       
     # Send mail
-    server = smtp.SMTP('smtp.gmail.com', 587)
-    server.ehlo()
-    server.starttls()
+    server = smtp.SMTP_SSL('smtp.gmail.com', 465)
+    # server.set_debuglevel(True)
     server.ehlo()
     server.login(sender, password)
     server.sendmail(sender, receiver, msg.as_string())
