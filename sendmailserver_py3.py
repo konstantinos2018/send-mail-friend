@@ -3,10 +3,11 @@
 # === IMPORTS ===
 import datetime as dt
 from modules import modules
+import os
 
 # Message 
 # Read sensitive data JSON file
-sens_data = modules.read_json('./sensitive_data.json')
+sens_data = modules.read_json(os.path.join(os.path.abspath(__file__), '../sensitive_data.json'))
 
 sender = sens_data['Sender'][0]['mail']
 password = sens_data['Sender'][0]['password']
