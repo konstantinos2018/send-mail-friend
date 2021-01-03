@@ -2,6 +2,7 @@ import smtplib as smtp
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import json
+import datetime as dt
 
 def send_mail(sender, password, receiver, msg):
       
@@ -41,3 +42,21 @@ def create_MIME(subject='', html='', sender='', sender_alias='Incognito', receiv
     msg.attach(message)
 
     return msg
+
+def get_greetings_word(time_now):
+    """
+    Args:
+        time_now -- output of time() method of datetime object
+    Returns:
+        greeting_word -- string
+    """
+    if (time_now >= dt.time(5)) and (time_now < dt.time(12)):
+        greeting_word = 'Good morning'
+    elif (time_now >= dt.time(12)) and (time_now <= dt.time(17)):
+        greeting_word = 'Good afternoon'
+    elif (time_now > dt.time(17)) and (time_now <= dt.time(21)):
+        greeting_word = 'Good evening'
+    elif (time_now > dt.time(21)) or (time_now < dt.time(5)):
+        greeting_word = 'Good night'
+
+    return greeting_word

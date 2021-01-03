@@ -13,20 +13,12 @@ password = sens_data['Sender'][0]['password']
 receiver = sens_data['Receiver'][0]['mail']
 
 # Define intro word
-t = dt.datetime.now()
-
-if (t.hour >= 5) and (t.hour < 12):
-  in_word = 'Good morning'
-elif (t.hour >= 12) and (t.hour <= 17):
-  in_word = 'Good afternoon'
-elif (t.hour > 17) and (t.hour <= 21):
-  in_word = 'Good evening'
-elif (t.hour > 21) and (t.hour < 5 ):
-  in_word = 'Good night'
+t_now = dt.datetime.now()
+greeting_word = modules.get_greetings_word(t_now.time())
 
 # Compute time period until leave
 t_leave = dt.datetime(2020, 10, 23, 15, 15, 0, 0) # leaving time
-t_diff = t_leave - t
+t_diff = t_leave - t_now
 
 # convert time to minutes
 t_diff_mins = t_diff.total_seconds() / 60
@@ -45,7 +37,7 @@ html = """\
     Kostas</p>
   </body>
 </html>
-""".format(in_word, t_diff_mins)
+""".format(greeting_word, t_diff_mins)
 
 subject = 'Χωρίς Θέμα'
 sender_alias = 'Άγνωστος'
