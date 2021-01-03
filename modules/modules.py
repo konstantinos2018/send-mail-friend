@@ -3,12 +3,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import json
 
-def send_mail(sender, password, receiver, html, msg):
-    
-    # construct message
-    message = MIMEText(html.encode('utf-8'), 'html', 'utf-8')
-    msg.attach(message)
-    
+def send_mail(sender, password, receiver, msg):
+      
     # Send mail
     server = smtp.SMTP('smtp.gmail.com', 587)
     server.ehlo()
@@ -38,6 +34,10 @@ def create_MIME(subject='', html='', sender='', sender_alias='Incognito', receiv
     msg = MIMEMultipart('alternative')
     msg['Subject'] = '{0}'.format(subject)
     msg['From'] = '{0} <{1}>'.format(sender_alias, sender)
-    msg['To'] = '{0} <{1}>'.format(receiver,_alias, receiver)
+    msg['To'] = '{0} <{1}>'.format(receiver_alias, receiver)
+
+    # construct message
+    message = MIMEText(html.encode('utf-8'), 'html', 'utf-8')
+    msg.attach(message)
 
     return msg
