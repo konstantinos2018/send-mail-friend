@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # === IMPORTS ===
-import sys, os
-import time, datetime
+import datetime as dt
 from modules import modules
 
 # Message 
@@ -14,7 +13,7 @@ password = sens_data['Sender'][0]['password']
 receiver = sens_data['Receiver'][0]['mail']
 
 # Define intro word
-t = datetime.datetime.now()
+t = dt.datetime.now()
 
 if (t.hour >= 5) and (t.hour < 12):
   in_word = 'Good morning'
@@ -26,7 +25,7 @@ elif (t.hour > 21) and (t.hour < 5 ):
   in_word = 'Good night'
 
 # Compute time period until leave
-t_leave = datetime.datetime(2020, 10, 23, 15, 15, 0, 0) # leaving time
+t_leave = dt.datetime(2020, 10, 23, 15, 15, 0, 0) # leaving time
 t_diff = t_leave - t
 
 # convert time to minutes
