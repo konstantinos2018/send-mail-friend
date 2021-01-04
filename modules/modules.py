@@ -5,7 +5,19 @@ import json
 import datetime as dt
 
 def send_mail(sender, password, receiver, msg):
-      
+    """
+    Send e-mail with smtp-over-SSL/TLS mode
+    ------------------------------------------------
+
+    Args:
+        sender -- string: e-mail address of sender
+        password -- string: password of e-mail address of sender
+        receiver -- string: e-mail address of receiver
+        msg -- MIME object
+
+    Returns:
+        None
+    """  
     # Send mail
     server = smtp.SMTP_SSL('smtp.gmail.com', 465)
     # server.set_debuglevel(True)
@@ -17,9 +29,13 @@ def send_mail(sender, password, receiver, msg):
     return None
 
 def read_json(json_fpath):
-    """Read json file
+    """
+    Read json file
+    ------------------------------------------------
+
     Args:
         json_fpath -- string (filepath)
+
     Returns:
         json_dict -- dictionary
     """
@@ -30,7 +46,21 @@ def read_json(json_fpath):
     return json_dict
 
 def create_MIME(subject='', html='', sender='', sender_alias='Incognito', receiver='', receiver_alias='Incognito'):
+    """
+    Creates a MIME object using the given inputs
+    ------------------------------------------------
 
+    Args:
+        subject -- string: subject of mail
+        html -- string: html-formatted text acting as body of the mail
+        sender -- string: e-mail address of sender
+        sender_alias -- string: nickname of sender
+        receiver -- string: e-mail address of receiver
+        receiver_alias -- string: nickname of receiver
+        
+    Returns:
+        msg -- MIME object
+    """
     msg = MIMEMultipart('alternative')
     msg['Subject'] = '{0}'.format(subject)
     msg['From'] = '{0} <{1}>'.format(sender_alias, sender)
@@ -44,10 +74,15 @@ def create_MIME(subject='', html='', sender='', sender_alias='Incognito', receiv
 
 def get_greetings_word(time_now):
     """
+    Take a specific datetime.time() object as input and decides which greetings word
+    to give as output according to if-elif rules
+    ------------------------------------------------
+
     Args:
-        time_now -- output of time() method of datetime object
+        time_now -- datetime.time() object
+
     Returns:
-        greeting_word -- string
+        greeting_word -- string: greetings word
     """
     if (time_now >= dt.time(5)) and (time_now < dt.time(12)):
         greeting_word = 'Good morning'
