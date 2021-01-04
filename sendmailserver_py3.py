@@ -11,7 +11,7 @@ sens_data = modules.read_json(os.path.join(os.path.abspath(__file__), '../sensit
 
 sender = sens_data['Sender'][0]['mail']
 password = sens_data['Sender'][0]['password']
-receiver = sens_data['Receiver'][0]['mail']
+receiver = sens_data['Receiver'][2]['mail']
 
 # Define intro word
 t_now = dt.datetime.now()
@@ -42,7 +42,7 @@ html = """\
 
 subject = 'Greetings'
 sender_alias = sens_data['Sender'][0]['name_alias']
-receiver_alias = sens_data['Receiver'][0]['name_alias']
+receiver_alias = sens_data['Receiver'][2]['name_alias']
 
 # create MIME object
 msg = modules.create_MIME(subject=subject, html=html, sender=sender, sender_alias=sender_alias, receiver=receiver, receiver_alias=receiver_alias)
