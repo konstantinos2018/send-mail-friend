@@ -17,9 +17,9 @@ receiver = sens_data['Receiver'][2]['mail']
 t_now = dt.datetime.now()
 greeting_word = modules.get_greetings_word(t_now.time())
 
-# Compute time period until leave
-t_leave = dt.datetime(2020, 10, 23, 15, 15, 0, 0) # leaving time
-t_diff = t_leave - t_now
+# Compute time period until getting out of lockdown
+t_lockdown = dt.datetime(2021, 1, 11, 6, 0, 0, 0) # Lockdown finishing
+t_diff = t_lockdown - t_now
 
 # convert time to minutes
 t_diff_mins = t_diff.total_seconds() / 60
