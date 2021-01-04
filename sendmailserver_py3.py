@@ -22,23 +22,24 @@ t_lockdown = dt.datetime(2021, 1, 11, 6, 0, 0, 0) # Lockdown finishing
 t_diff = t_lockdown - t_now
 
 # convert time to minutes
-t_diff_mins = t_diff.total_seconds() / 60
-
+# t_diff_mins = t_diff.total_seconds() / 60
+t_diff_hrs, t_diff_mins = modules.get_hrs_mins(t_diff.seconds)
 
 # Create message content and metadata
 html = """\
 <html>
   <head></head>
   <body>
-    <p>{0},</p>
+    <p>{0} &#128516;,</p>
     <p>
-	   {1} minutes remaining
+	   {1} <b>days</b> {2} <b>hrs</b> and {3} mins remaining until lockdown ends...
+     or {4} minutes or {5} seconds
     </p>
     <p>Kind Regards,<br>
     Kostas</p>
   </body>
 </html>
-""".format(greeting_word, t_diff_mins)
+""".format(greeting_word, t_diff.days, t_diff_hrs, t_diff_mins, t_diff.total_seconds()/60, t_diff.total_seconds())
 
 subject = 'Greetings'
 sender_alias = sens_data['Sender'][0]['name_alias']

@@ -57,7 +57,7 @@ def create_MIME(subject='', html='', sender='', sender_alias='Incognito', receiv
         sender_alias -- string: nickname of sender
         receiver -- string: e-mail address of receiver
         receiver_alias -- string: nickname of receiver
-        
+
     Returns:
         msg -- MIME object
     """
@@ -94,3 +94,25 @@ def get_greetings_word(time_now):
         greeting_word = 'Good night'
 
     return greeting_word
+
+def get_hrs_mins(time_seconds):
+    """
+    Converts seconds to hours and minutes
+    ------------------------------------------------
+
+    Args:
+        time_seconds -- int: numbers of seconds
+
+    Returns:
+        hrs -- int: number of complete hours included in time_seconds
+        mins -- int: number of complete mins included in time_seconds
+    """
+    # compute total minutes
+    time_mins_total = time_seconds / 60
+
+    # compute hours in total minutes
+    hrs = int(time_mins_total // 60)
+    # compute remaining minutes in total minutes
+    mins = int(time_mins_total % 60)
+
+    return hrs, mins
