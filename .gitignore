@@ -1,7 +1,8 @@
 # My Project files
 sensitive_data.json
 *.pyc
-tests/
+#tests/
+tests/__init__.py
 sendmailserver.py
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,windows,vscode
