@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/c/Anaconda3/envs/myenv/python
 # -*- coding: utf-8 -*-
 # === IMPORTS ===
 import datetime as dt
