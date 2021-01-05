@@ -32,8 +32,13 @@ html = """\
   <body>
     <p>{0} &#128516;,</p>
     <p>
-	   {1} <b>days</b> {2} <b>hrs</b> and {3} mins remaining until lockdown ends...
-     or {4} minutes or {5} seconds
+      {1} days {2} hrs and {3} mins remaining until lockdown ends...
+    </p>
+    <p>
+      or {4:.0f} minutes...
+    </p>
+    <p>
+      or {5:.0f} seconds
     </p>
     <p>Kind Regards,<br>
     Kostas</p>
