@@ -134,12 +134,12 @@ def extract_opts():
     parser = argparse.ArgumentParser(description='Send e-mail in interactive and non interactive mode.')
 
     # Add --interactive option
-    parser.add_argument('-i', '--interactive', action='store_true', help='Runs script in interactive mode,\
+    parser.add_argument('-i', '--interactive-date', action='store_true', help='Runs script in interactive mode,\
         i.e. explicitly asks user for input', required=False)
 
-    # Add --non-interactive option
-    parser.add_argument('-n', '--non-interactive', action='store_true', help='Runs script in non-interactive mode,\
-        i.e. use default values that are defined in the script', required=False)
+    # Add --mail option with e-mail address and name alias arguments
+    parser.add_argument('-m', '--mail', action='store', nargs=2, metavar='', help='Insert e-mail address of sender,\
+        e.g. mail@domain.xxx', required=False)
 
     # Convert to dictionary
     args = vars(parser.parse_args())
