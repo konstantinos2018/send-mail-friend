@@ -5,14 +5,6 @@ import datetime as dt
 from modules import modules
 import os
 
-# Message 
-# Read sensitive data JSON file
-sens_data = modules.read_json(os.path.join(os.path.abspath(__file__), '../sensitive_data.json'))
-
-sender = sens_data['Sender'][0]['mail']
-password = sens_data['Sender'][0]['password']
-receiver = sens_data['Receiver'][2]['mail']
-
 # Define intro word
 t_now = dt.datetime.now()
 greeting_word = modules.get_greetings_word(t_now.time())
@@ -24,6 +16,13 @@ t_diff = t_lockdown - t_now
 # convert time to minutes
 # t_diff_mins = t_diff.total_seconds() / 60
 t_diff_hrs, t_diff_mins = modules.get_hrs_mins(t_diff.seconds)
+
+# Read sensitive data JSON file
+sens_data = modules.read_json(os.path.join(os.path.abspath(__file__), '../sensitive_data.json'))
+
+sender = sens_data['Sender'][0]['mail']
+password = sens_data['Sender'][0]['password']
+receiver = sens_data['Receiver'][2]['mail']
 
 # Create message content and metadata
 html = """\
