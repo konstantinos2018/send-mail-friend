@@ -3,6 +3,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import json
 import datetime as dt
+import argparse
+import sys
 
 def send_mail(sender, password, receiver, msg):
     """
@@ -116,3 +118,30 @@ def get_hrs_mins(time_seconds):
     mins = int(time_mins_total % 60)
 
     return hrs, mins
+
+def extract_opts():
+    """
+    Extracts the options of the script that the functions is running
+    ------------------------------------------------
+
+    Args:
+        None
+    Returns:
+        args -- dictionary: keys=command-line option, values=True/False
+    """
+    
+    # Create parser object
+    parser = argparse.ArgumentParser(description='Send e-mail in interactive and non interactive mode.')
+
+    # Add --interactive option
+    parser.add_argument('-i', '--interactive', action='store_true', help='Runs script in interactive mode,\
+        i.e. explicitly asks user for input', required=False)
+
+    # Add --non-interactive option
+    parser.add_argument('-n', '--non-interactive', action='store_true', help='Runs script in non-interactive mode,\
+        i.e. use default values that are defined in the script', required=False)
+
+    # Convert to dictionary
+    args = vars(parser.parse_args())
+    
+    return args
