@@ -3,14 +3,22 @@
 # === IMPORTS ===
 import datetime as dt
 from modules import modules
-import os
+import os, sys
+
+# Extract command-line arguments
+args = modules.extract_opts()
+
+if args['interactive']:
+  answer = input('')
+  
+elif args['non_interactive']:
+  t_lockdown = dt.datetime(2021, 1, 11, 6, 0, 0, 0) # Lockdown finishing
 
 # Define intro word
 t_now = dt.datetime.now()
 greeting_word = modules.get_greetings_word(t_now.time())
 
 # Compute time period until getting out of lockdown
-t_lockdown = dt.datetime(2021, 1, 11, 6, 0, 0, 0) # Lockdown finishing
 t_diff = t_lockdown - t_now
 
 # convert time to minutes
