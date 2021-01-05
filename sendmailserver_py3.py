@@ -9,10 +9,15 @@ import os, sys
 args = modules.extract_opts()
 
 if args['interactive']:
-  answer = input('')
+  t_lockdown = input('Lockdown date must be in the following format d-m-yyyy.\nInsert date here: \n')
+  t_lockdown = dt.datetime.strptime(t_lockdown, '%d-%m-%Y')
   
 elif args['non_interactive']:
   t_lockdown = dt.datetime(2021, 1, 11, 6, 0, 0, 0) # Lockdown finishing
+
+else:
+  print('You did not defined any options during script call.\nExiting...')
+  sys.exit(1)
 
 # Define intro word
 t_now = dt.datetime.now()
