@@ -138,8 +138,8 @@ def extract_opts():
         i.e. explicitly asks user for input', required=False)
 
     # Add --mail option with e-mail address and name alias arguments
-    parser.add_argument('-m', '--mail', action='store', nargs=2, metavar='', help='Insert e-mail address of sender,\
-        e.g. mail@domain.xxx', required=False)
+    parser.add_argument('-m', '--mail', action='store', nargs=2, metavar='', help='Insert e-mail address of sender and name alias,\
+        e.g. mail@domain.xxx "Manos Danezis"', required=False)
 
     # Convert to dictionary
     args = vars(parser.parse_args())
