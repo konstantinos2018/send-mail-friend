@@ -53,7 +53,7 @@ sens_data = modules.read_json(os.path.join(os.path.abspath(__file__), '../sensit
 # Assign values to mail metadata variables
 sender = sens_data['Sender'][0]['mail']
 password = sens_data['Sender'][0]['password']
-if args['mail'][0]:
+if args['mail']:
   receiver = args['mail'][0]
   receiver_alias = args['mail'][1]
 else:
