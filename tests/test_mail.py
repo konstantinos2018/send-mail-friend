@@ -1,7 +1,6 @@
 
 #!/c/Anaconda3/envs/myenv/python
 import sys
-sys.path.insert(1, 'C:/Users/KostaGeo/Desktop/send-mail-py_operational')
 import unittest
 from modules import modules
 import datetime as dt
@@ -54,6 +53,7 @@ class TestTimeConversion(unittest.TestCase):
         test_case = 130*60 # seconds
         expected = (2, 10)
         self.assertEqual(modules.get_hrs_mins(test_case), expected)
+
 
 if __name__ == "__main__":      
     unittest.main()
