@@ -127,7 +127,7 @@ def extract_opts():
     Args:
         None
     Returns:
-        args -- dictionary: keys=command-line option, values=True/False
+        args -- dictionary: keys=command-line option, values=True/False/list of arguments
     """
     
     # Create parser object
