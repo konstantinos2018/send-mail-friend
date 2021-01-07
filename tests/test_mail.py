@@ -6,35 +6,15 @@ from modules import modules
 import datetime as dt
 
 class TestGreetingsWord(unittest.TestCase):
-    def test_night_1(self):
-        test_case = dt.time(22)
-        expected = 'Good night'
-        self.assertEqual(modules.get_greetings_word(test_case), expected)
     
-    def test_night_2(self):
-        test_case = dt.time(0)
-        expected = 'Good night'
-        self.assertEqual(modules.get_greetings_word(test_case), expected)
-    
-    def test_night_3(self):
-        test_case = dt.time(3)
-        expected = 'Good night'
-        self.assertEqual(modules.get_greetings_word(test_case), expected)
-    
-    def test_morning(self):
-        test_case = dt.time(9)
-        expected = 'Good morning'
-        self.assertEqual(modules.get_greetings_word(test_case), expected)
-    
-    def test_afternoon(self):
-        test_case = dt.time(14)
-        expected = 'Good afternoon'
-        self.assertEqual(modules.get_greetings_word(test_case), expected)
-
-    def test_evening(self):
-        test_case = dt.time(19)
-        expected = 'Good evening'
-        self.assertEqual(modules.get_greetings_word(test_case), expected)
+    def test_time_of_day(self):
+        # Define pair time-greeting_word values to run the test on
+        time_expected = [(22, 'Good night'), (0, 'Good night'), (3, 'Good night'),
+                (9, 'Good morning'), (14, 'Good afternoon'), (19, 'Good evening')]
+                
+        for time, greeting in time_expected:
+            with self.subTest(input_pair=(time, greeting)):
+                self.assertEqual(modules.get_greetings_word(dt.time(time)), greeting)
     
 class TestTimeConversion(unittest.TestCase):
     
