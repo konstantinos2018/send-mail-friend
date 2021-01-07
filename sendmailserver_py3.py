@@ -49,7 +49,6 @@ html = """\
 """.format(greeting_word, t_diff.days, t_diff_hrs, t_diff_mins, t_diff.total_seconds()/60, t_diff.total_seconds())
 
 # Read sensitive data JSON file
-# sens_data = modules.read_json(os.path.join(os.path.abspath(__file__), '../sensitive_data.json'))
 sens_data = modules.read_json('./sensitive_data.json')
 # Assign values to mail metadata variables
 sender = sens_data['Sender'][0]['mail']
