@@ -2,8 +2,9 @@
 #!/c/Anaconda3/envs/myenv/python
 import sys
 import unittest
-from modules import modules
 import datetime as dt
+
+from modules import modules
 
 class TestGreetingsWord(unittest.TestCase):
     

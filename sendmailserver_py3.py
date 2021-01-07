@@ -2,8 +2,9 @@
 
 # === IMPORTS ===
 import datetime as dt
+import os
+
 from modules import modules
-import os, sys
 
 # Extract command-line arguments
 args = modules.extract_opts()
