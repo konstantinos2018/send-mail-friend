@@ -12,10 +12,10 @@ def send_mail(sender, password, receiver, msg):
     ------------------------------------------------
 
     Args:
-        sender -- string: e-mail address of sender
-        password -- string: password of e-mail address of sender
-        receiver -- string: e-mail address of receiver
-        msg -- MIME object
+        sender (str) -- e-mail address of sender
+        password (str) -- password of e-mail address of sender
+        receiver (str) -- e-mail address of receiver
+        msg (MIME object) -- MIME object with mail metadata
 
     Returns:
         None
@@ -36,10 +36,10 @@ def read_json(json_fpath):
     ------------------------------------------------
 
     Args:
-        json_fpath -- string (filepath)
+        json_fpath (str) -- filepath
 
     Returns:
-        json_dict -- dictionary
+        json_dict (dict) -- contains metadata e.g. email, name_alias etc
     """
 
     with open(json_fpath, mode='r') as json_file:
@@ -53,15 +53,15 @@ def create_MIME(subject='', html='', sender='', sender_alias='Incognito', receiv
     ------------------------------------------------
 
     Args:
-        subject -- string: subject of mail
-        html -- string: html-formatted text acting as body of the mail
-        sender -- string: e-mail address of sender
-        sender_alias -- string: nickname of sender
-        receiver -- string: e-mail address of receiver
-        receiver_alias -- string: nickname of receiver
+        subject (str) -- subject of mail
+        html (str) -- html-formatted text acting as body of the mail
+        sender (str) -- e-mail address of sender
+        sender_alias (str) -- nickname of sender
+        receiver (str) -- e-mail address of receiver
+        receiver_alias (str) -- nickname of receiver
 
     Returns:
-        msg -- MIME object
+        msg (MIME object) -- generated MIME object that contains mail metadata
     """
     msg = MIMEMultipart('alternative')
     msg['Subject'] = '{0}'.format(subject)
@@ -81,10 +81,10 @@ def get_greetings_word(time_now):
     ------------------------------------------------
 
     Args:
-        time_now -- datetime.time() object
+        time_now (datetime.time() object) -- time e.g. now or some other time user-defined
 
     Returns:
-        greeting_word -- string: greetings word
+        greeting_word (str) -- greetings word that is used in the beginning of the e-mail's html body
     """
     if (time_now >= dt.time(5)) and (time_now < dt.time(12)):
         greeting_word = 'Good morning'
@@ -103,11 +103,11 @@ def get_hrs_mins(time_seconds):
     ------------------------------------------------
 
     Args:
-        time_seconds -- int: numbers of seconds
+        time_seconds (int) -- numbers of seconds
 
     Returns:
-        hrs -- int: number of complete hours included in time_seconds
-        mins -- int: number of complete mins included in time_seconds
+        hrs (int) -- number of complete hours included in time_seconds
+        mins (int) -- number of complete mins included in time_seconds
     """
     # compute total minutes
     time_mins_total = time_seconds / 60
@@ -127,7 +127,7 @@ def extract_opts():
     Args:
         None
     Returns:
-        args -- dictionary: keys=command-line option, values=True/False/list of arguments
+        args (dict) -- keys=command-line option, values=True/False/list of arguments
     """
     
     # Create parser object
