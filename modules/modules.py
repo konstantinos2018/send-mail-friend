@@ -113,9 +113,9 @@ def get_hrs_mins(time_seconds):
     time_mins_total = time_seconds / 60
 
     # compute hours in total minutes
-    hrs = int(time_mins_total // 60)
+    hrs = round(time_mins_total // 60)
     # compute remaining minutes in total minutes
-    mins = int(time_mins_total % 60)
+    mins = round(time_mins_total % 60)
 
     return hrs, mins
 
