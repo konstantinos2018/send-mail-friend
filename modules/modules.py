@@ -5,6 +5,7 @@ import json
 import datetime as dt
 import argparse
 import sys
+import ssl
 
 def send_mail(sender, password, receiver, msg):
     """
@@ -19,9 +20,12 @@ def send_mail(sender, password, receiver, msg):
 
     Returns:
         None
-    """  
+    """
+    
+    context = ssl.create_default_context()
+
     # Send mail
-    server = smtp.SMTP_SSL('smtp.gmail.com', 465)
+    server = smtp.SMTP_SSL('smtp.gmail.com', 465, context=context)
     # server.set_debuglevel(True)
     server.ehlo()
     server.login(sender, password)
